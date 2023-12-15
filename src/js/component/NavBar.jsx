@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
@@ -7,15 +7,27 @@ const NavBar = ({}) => {
   const { actions } = useContext(Context);
   const [search, setSearch] = useState("");
 
+  useEffect(() => {
+    let searchQuery = new URLSearchParams(window.location.search).get("s");
+
+    if (searchQuery) {
+      setSearch(searchQuery);
+      actions.searchSpoonacular(searchQuery);
+    }
+  }, []);
+
   return (
     <nav className="navbar bg-body-tertiary">
       <div className="container-fluid">
-        <Link className="navbar-brand">Wobsite</Link>
+        <Link to="/" className="navbar-brand">
+          Wobsite
+        </Link>
         <form
           className="d-flex"
           role="search"
           onSubmit={(e) => {
             e.preventDefault();
+            window.history.replaceState(null, "", `?s=${search}`);
             actions.searchSpoonacular(search);
           }}
         >
