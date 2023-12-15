@@ -28,7 +28,7 @@ const RecipePage = () => {
             }}
           ></p>
         </div>
-        <div className="modal-footer">
+        <div className="d-flex flex-row justify-content-around">
           <small>
             Ready in {store.selectedRecipe?.readyInMinutes} minutes.
           </small>
