@@ -15,19 +15,27 @@ const getState = ({ getStore, getActions, setStore }) => {
     },
     actions: {
       createContact: async (contact) => {
-        console.log(contact);
+        console.log(
+          "Your app should make a POST request with your contact data."
+        );
       },
 
       readContacts: async () => {
-        // We'll get our contacts here.
+        console.log(
+          "Your app should make a fetch req. to GET all contacts for your slug."
+        );
       },
 
       updateContact: async (id, updatedData) => {
-        // We'll get our contacts here.
+        console.log(
+          `Your app should make a PUT request to update contact_id ${id}`
+        );
       },
 
       deleteContact: async (id) => {
-        console.log(`Delete contact #${id}`);
+        console.log(
+          `Your app should make a DELETE request for contact_id ${id}`
+        );
       },
     },
   };
