@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../../styles/home.css";
 
 import { Context } from "../store/appContext.js";
@@ -7,7 +7,11 @@ import { Card } from "../component/Card.jsx";
 import { Link } from "react-router-dom";
 
 const Home = () => {
-  const { store } = useContext(Context);
+  const { store, actions } = useContext(Context);
+
+  useEffect(async () => {
+    await actions.readContacts();
+  }, []);
 
   return (
     <>
