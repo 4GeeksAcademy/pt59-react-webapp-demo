@@ -7,15 +7,6 @@ const NavBar = ({}) => {
   const { actions } = useContext(Context);
   const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    let searchQuery = new URLSearchParams(window.location.search).get("s");
-
-    if (searchQuery) {
-      setSearch(searchQuery);
-      actions.searchSpoonacular(searchQuery);
-    }
-  }, []);
-
   return (
     <nav className="navbar bg-body-tertiary">
       <div className="container-fluid">
@@ -28,7 +19,6 @@ const NavBar = ({}) => {
           onSubmit={(e) => {
             e.preventDefault();
             window.history.replaceState(null, "", `?s=${search}`);
-            actions.searchSpoonacular(search);
           }}
         >
           <input

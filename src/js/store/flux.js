@@ -1,27 +1,33 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      searchResults: [],
-      selectedRecipe: {},
+      agenda_slug: "pt59-demo-agenda",
+      contacts: [
+        {
+          address: "404 Nonesuch Pl. Irving, TX 75061",
+          agenda_slug: "pt59-demo-agenda",
+          email: "sombra@catemail.com",
+          full_name: "Sombra The Cat",
+          id: 58647261029,
+          phone: "16035555555",
+        },
+      ],
     },
     actions: {
-      searchSpoonacular: async (search) => {
-        const url = "https://api.spoonacular.com/recipes/complexSearch";
-        const apiKey = process.env.API_KEY;
-
-        const response = await fetch(`${url}?apiKey=${apiKey}&query=${search}`);
-        const data = await response.json();
-
-        setStore({
-          searchResults: data.results,
-        });
+      createContact: async (contact) => {
+        console.log(contact);
       },
 
-      getSingleRecipe: async (recipe_id) => {
-        const url = `https://api.spoonacular.com/recipes/${recipe_id}/information`;
-        const resp = await fetch(`${url}?apiKey=${process.env.API_KEY}`);
-        const data = await resp.json();
-        setStore({ selectedRecipe: data });
+      readContacts: async () => {
+        // We'll get our contacts here.
+      },
+
+      updateContact: async (id, updatedData) => {
+        // We'll get our contacts here.
+      },
+
+      deleteContact: async (id) => {
+        console.log(`Delete contact #${id}`);
       },
     },
   };

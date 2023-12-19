@@ -4,21 +4,19 @@ import "../../styles/home.css";
 import { Context } from "../store/appContext.js";
 
 import { Card } from "../component/Card.jsx";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { store } = useContext(Context);
 
   return (
     <>
-      <section className="d-flex flex-column gap-3 mt-3 align-items-center">
-        {store.searchResults.map((recipe, idx) => (
-          <Card
-            key={idx}
-            title={recipe.title}
-            img={recipe.image}
-            recipeId={recipe.id}
-          ></Card>
+      <section className="d-flex flex-column gap-3 mt-3 mx-5 align-items-center">
+        {store.contacts.map((item, idx) => (
+          <Card key={idx} contact={item} />
         ))}
+        <Link to="/create">Add a contact</Link>
+        <Link to="/edit">Edit a contact</Link>
       </section>
     </>
   );
