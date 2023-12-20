@@ -9,7 +9,7 @@ const People = () => {
   return (
     <section className="container mt-3">
       <h1>People</h1>
-      <SingleItemLayout>
+      <SingleItemLayout img={"https://placekitten.com/250"}>
         <code>{id}</code>
       </SingleItemLayout>
     </section>
